@@ -33,6 +33,8 @@ public class TimelineActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_timeline);
+
+        client = TwitterApp.getRestClient(this);
         swipeContainer = findViewById(R.id.swipeContainer);
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
@@ -45,14 +47,15 @@ public class TimelineActivity extends AppCompatActivity {
                 populateHomeTimeline();
             }
         });
-        client = TwitterApp.getRestClient(this);
+
 
         rvTweets = findViewById(R.id.rvTweet);
         tweets = new ArrayList<>();
         adapter = new TweetsAdapter(this, tweets);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
 
-        rvTweets.setLayoutManager(new LinearLayoutManager(this));
+        rvTweets.setLayoutManager(layoutManager);
         rvTweets.setAdapter(adapter);
 
         scrollListener = new EndlessRecyclerViewScrollListener(layoutManager) {

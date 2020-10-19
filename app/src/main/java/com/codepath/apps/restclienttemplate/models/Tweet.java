@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate.models;
 
 import androidx.appcompat.widget.AppCompatSeekBar;
+import androidx.room.Entity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -10,6 +11,7 @@ import org.parceler.Parcel;
 import java.util.ArrayList;
 import java.util.List;
 @Parcel
+@Entity
 public class Tweet {
     public  String  body;
     public String createdAt;
